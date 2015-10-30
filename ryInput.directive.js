@@ -23,7 +23,7 @@ angular.module('ryInputDemo')
 
       function updateElementWidth(modelValue) {
         //input text (or placeholder text) --> guide text
-        elementGuide.html(modelValue || attributes.placeholder);
+        elementGuide.html(modelValue || attributes.placeholder || '');
         //input text style --> guide text style
         var elementComputedStyle = $window.getComputedStyle(element[0]);
         angular.forEach([
