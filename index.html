@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ryInputDemo">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <title>Demo for ry-input</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+  <script>
+    angular.module('ryInputDemo', [])
+    .controller('ryInputDemoCtrl', ['$scope', function($scope) {
+      $scope.inputs = {
+        one: 'Hello. Type in me.'
+      };
+    }]);
+  </script>
+  <script src="ryInput.directive.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,500" rel="stylesheet" type="text/css">
+  <style>
+    /*Some basic styles to get us through this simple example*/
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Roboto, sans-serif;
+      font-weight: 400;
+    }
+  </style>
+</head>
+<body ng-controller="ryInputDemoCtrl">
+
+  <h1>Basic ry-input usage</h1>
+  <input type="text" ng-model="inputs.one" ry-input>
+
+</body>
+</html>
