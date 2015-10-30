@@ -1,20 +1,19 @@
 angular.module('ryInputDemo')
 .directive('ryInput', ['$window', '$parse', function($window, $parse) {
-
-  //Set up element guide
-  var elementGuide = angular.element('<span></span>');
-  elementGuide.css({
-    display: 'inline-block',
-    position: 'fixed',
-    left: '0',
-    top: '0', //-10000px'
-    width: 'auto',
-    whiteSpace: 'pre' //preserve white space
-  });
-
   return {
     restrict: 'A',
     link: function postLink(scope, element, attributes) {
+      //Set up element guide, one per input
+      var elementGuide = angular.element('<span></span>');
+      elementGuide.css({
+        display: 'inline-block',
+        position: 'fixed',
+        left: '0',
+        top: '0', //-10000px'
+        width: 'auto',
+        whiteSpace: 'pre' //preserve white space
+      });
+
       //Insert element guide after element
       //but it doesn't matter where guide is (position: fixed)
       element.after(elementGuide);
