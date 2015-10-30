@@ -1,5 +1,5 @@
 angular.module('ryInputDemo')
-.directive('ryInput', ['$window', function($window) {
+.directive('ryInput', ['$window', '$parse', function($window, $parse) {
 
   //Set up element guide
   var elementGuide = angular.element('<span></span>');
@@ -15,12 +15,12 @@ angular.module('ryInputDemo')
   return {
     restrict: 'A',
     link: function postLink(scope, element, attributes) {
-      //Don't trim trailing whitespace on input value
-      attributes.$set('ngTrim', 'false');
-
       //Insert element guide after element
       //but it doesn't matter where guide is (position: fixed)
       element.after(elementGuide);
+
+      //Don't trim trailing whitespace on input value
+      attributes.$set('ngTrim', 'false');
 
       function updateElementWidth(modelValue) {
         //input text (or placeholder text) --> guide text
@@ -64,7 +64,8 @@ angular.module('ryInputDemo')
         //To fix this, run updateElementWidth() one time right after CSS loads.
         $window.addEventListener('load', function onWindowLoad() {
           $window.removeEventListener('load', onWindowLoad);
-          updateElementWidth();
+          var modelValue = $parse(attributes.ngModel)(scope);
+          updateElementWidth(modelValue);
         });
       }
     }
