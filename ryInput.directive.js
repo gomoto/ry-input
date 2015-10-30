@@ -9,7 +9,7 @@ angular.module('ryInputDemo')
         display: 'inline-block',
         position: 'fixed',
         left: '0',
-        top: '0', //-10000px'
+        top: '-10000px',
         width: 'auto',
         whiteSpace: 'pre' //preserve white space
       });
